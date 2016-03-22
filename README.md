@@ -11,3 +11,36 @@ Another test project (you may have noticed that I have a bunch of them). Here I'
 - Writing isomorphic apps
 - Browser-based testing
 - Redux Refactor
+
+### Setting up Rails with React
+
+is simple. Scaffolded *Song* and *Comment* models. Added `gem 'react-rails'` to *Gemfile* and developed my first React Component:
+
+```jsx
+var Comment = React.createClass({
+
+  // Not required, just a good practice.
+  propTypes: {
+    author: React.PropTypes.string,
+    body: React.PropTypes.string,
+    rank: React.PropTypes.number
+  },
+
+  // required
+  render: function() {
+    return (
+      <div>
+        <div> Author: {this.props.author} </div>
+        <div> Body: {this.props.body} </div>
+        <div> Rank: {this.props.rank} </div>
+      </div>
+    );
+  }
+});
+```
+
+Which can be called in my views using the `react_component` helper provided by the *react-rails* gem:
+
+```erb
+<%= react_component( 'Comment', { author: 'D', body: 'asdf', rank: 14 }) %>
+```
