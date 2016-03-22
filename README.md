@@ -2,6 +2,7 @@
 
 Another test project (you may have noticed that I have a bunch of them). Here I'm going to develop an application following the O'Reilly - ['Hands-on with React and Ruby on Rails'](http://shop.oreilly.com/product/0636920044307.do) course. One thing to point out, I'm not going to blindly copypaste the provided examples and there are going to be Songs with Comments in my app. Other differences to come.
 
+
 ## TOPICS COVERED
 
 - Setting up Rails with React
@@ -11,6 +12,7 @@ Another test project (you may have noticed that I have a bunch of them). Here I'
 - Writing isomorphic apps
 - Browser-based testing
 - Redux Refactor
+
 
 ### Setting up Rails with React
 
@@ -41,11 +43,13 @@ var Comment = React.createClass({
 });
 ```
 
+
 Which can be called in my views using the `react_component` helper provided by the *react-rails* gem:
 
 ```erb
 <%= react_component( 'Comment', { author: 'D', body: 'asdf', rank: 14 }) %>
 ```
+
 
 The next step is to pass comments to React as JSON. [Jbuilder](https://github.com/rails/jbuilder) is a perfect tool for this:
 
@@ -57,6 +61,7 @@ json.array! @comments, partial: 'comments/comment', as: :comment
 json.( comment, :id, :body, :author, :rank )
 
 ```
+
 
 Also I created a Component to render all the comments:
 
@@ -75,6 +80,7 @@ var CommentList = React.createClass({
   }
 });
 ```
+
 
 and now I'm calling it from the view:
 
