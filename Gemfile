@@ -37,3 +37,4 @@ end
 
 gem 'ancestry'
 gem 'rails_admin'
+gem 'foundation-rails'
