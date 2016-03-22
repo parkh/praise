@@ -44,3 +44,37 @@ Which can be called in my views using the `react_component` helper provided by t
 ```erb
 <%= react_component( 'Comment', { author: 'D', body: 'asdf', rank: 14 }) %>
 ```
+
+The next step is to pass comments to React as JSON. [Jbuilder](https://github.com/rails/jbuilder) is a perfect tool for this:
+
+```ruby
+# app/views/comments/index.json.jbuilder
+json.array! @comments, partial: 'comments/comment', as: :comment
+
+# app/views/comments/_comment.json.jbuilder
+json.( comment, :id, :body, :author, :rank )
+
+```
+
+Also I created a Component to render all the comments:
+
+```jsx
+var CommentList = React.createClass({
+  render: function() {
+    return (
+      <div>
+        {JSON.parse( this.props.comments ).map(function(comment) {
+          return (<Comment key={comment.id} {... comment} />);
+        })}
+      </div>
+    );
+  }
+});
+```
+
+and now I'm calling it from the view:
+
+```erb
+<!-- app/views/songs/show.html.erb -->
+<%= react_component( 'CommentList', { comments: raw( render( template: 'comments/index.json.jbuilder' ))}) %>
+```
