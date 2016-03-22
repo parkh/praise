@@ -17,6 +17,8 @@ Another test project (you may have noticed that I have a bunch of them). Here I'
 is simple. Scaffolded *Song* and *Comment* models. Added `gem 'react-rails'` to *Gemfile* and developed my first React Component:
 
 ```jsx
+// app/assets/javascripts/components/comment.js.jsx
+
 var Comment = React.createClass({
 
   // Not required, just a good practice.
@@ -59,6 +61,8 @@ json.( comment, :id, :body, :author, :rank )
 Also I created a Component to render all the comments:
 
 ```jsx
+// app/assets/javascripts/components/comment_list.js.jsx
+
 var CommentList = React.createClass({
   render: function() {
     return (
