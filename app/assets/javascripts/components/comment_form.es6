@@ -6,22 +6,22 @@ class CommentForm extends React.Component {
     }
   }
 
-  constructor() {
-    super();
-    this.defaultState = { body: '', author: '' };
-    this.state = this.defaultState;
+  constructor(props) {
+    super()
+    this.defaultState = { body: '', author: '' }
+    this.state = this.defaultState
   }
 
   submitComment(event) {
-    event.preventDefault();
-    this.context.actions.addComment(this.state);
-    this.setState(this.defaultState);
+    event.preventDefault()
+    this.context.actions.addComment(_.merge(this.state, { parent_id: this.props.parent_id }))
+    this.setState(this.defaultState)
   }
 
   onFieldChange(event) {
-    let prop = {};
-    prop[event.target.name] = event.target.value;
-    this.setState(prop);
+    let prop = {}
+    prop[event.target.name] = event.target.value
+    this.setState(prop)
   }
 
   render() {
@@ -33,7 +33,7 @@ class CommentForm extends React.Component {
         <textarea name="body" onChange={this.onFieldChange.bind(this)} value={this.state.body} />
         <button onClick={this.submitComment.bind(this)} type="submit" >Submit</button>
       </form>
-    );
+    )
   }
 }
-export default CommentForm;
+export default CommentForm
