@@ -8,17 +8,20 @@ class CommentSection extends React.Component {
   constructor() {
     super();
     this.store = new CommentStore();
+    this.actions = Actions
   }
 
   static get childContextTypes() {
     return {
-      store: React.PropTypes.object.isRequired
+      store: React.PropTypes.object.isRequired,
+      actions: React.PropTypes.func.isRequired
     }
   }
 
   getChildContext() {
     return {
-      store: this.store
+      store: this.store,
+      actions: this.actions
     }
   }
 
@@ -32,6 +35,5 @@ class CommentSection extends React.Component {
   }
 }
 
-window.Actions = Actions
 window.CommentSection = CommentSection
 export default CommentSection
