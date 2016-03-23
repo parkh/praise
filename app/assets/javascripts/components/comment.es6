@@ -1,4 +1,4 @@
-import CommentForm from 'comment_form'
+import CommentForm from 'components/comment_form'
 
 class Comment extends React.Component {
   static get propTypes(){
