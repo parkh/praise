@@ -20,6 +20,10 @@ class Comment extends React.Component {
     this.setState({ isReplying: !this.state.isReplying })
   }
 
+  onCommentSubmitted(event) {
+    this.setState({isReplying: false})
+  }
+
   render() {
     const replyText = this.state.isReplying ? 'Hide' : 'Reply'
     return (
@@ -31,7 +35,11 @@ class Comment extends React.Component {
           </cite>
         </blockquote>
         <button className='button tiny secondary' onClick={this.onToggleReply.bind(this)}>{replyText}</button>
-        <CommentForm parent_id={this.props.id} isReplying={this.state.isReplying} />
+        <CommentForm
+          parent_id={this.props.id}
+          isReplying={this.state.isReplying}
+          onCommentSubmitted={this.onCommentSubmitted.bind(this)}
+        />
         <CommentList parent_id={this.props.id} />
       </li>
     )
