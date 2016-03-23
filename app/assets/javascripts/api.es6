@@ -14,6 +14,14 @@ class Api {
     }
   }
 
+  static put(route, params) {
+    return fetch(`${route}.json`, {
+      method: 'put',
+      credentials: 'include',
+      headers: this.headers()
+    })
+  }
+
   static post(route, params) {
     return fetch(`${route}.json`, _.merge({
       method: 'post',

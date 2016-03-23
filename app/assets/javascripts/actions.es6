@@ -16,6 +16,17 @@ class Actions {
     })
   }
 
+  static upvoteComment(comment) {
+    Api.put(`/songs/1/comments/${comment.id}/upvote`).then( resp => {
+      return resp.json()
+    }).then( comment => {
+      AppDispatcher.dispatch({
+        actionType: Constants.UPVOTE_COMMENT,
+        comment: comment
+      })
+    })
+  }
+
   static setComments(params) {
     AppDispatcher.dispatch({
       actionType: Constants.SET_COMMENTS,

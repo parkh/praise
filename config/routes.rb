@@ -1,7 +1,9 @@
 Rails.application.routes.draw do
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
   resources :songs do
-    resources :comments
+    resources :comments do
+      put 'upvote', to: 'comments#upvote'
+    end
   end
   root 'songs#index'
 
