@@ -37,7 +37,7 @@ end
 
 gem 'ancestry'
 gem 'rails_admin'
-gem 'foundation-rails'
+gem 'foundation-rails', '5.5.3.2'
 gem 'react-rails'
 gem 'flux-rails-assets'
 gem 'lodash-rails'
