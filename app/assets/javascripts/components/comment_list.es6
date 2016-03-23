@@ -9,25 +9,25 @@ class CommentList extends React.Component {
   }
 
   componentDidMount() {
-    this.context.store.addChangeListener(this._onChange.bind(this));
+    this.context.store.addChangeListener(this._onChange.bind(this))
   }
 
   componentWillUnmount() {
-    this.context.store.removeChangeListener(this._onChange.bind(this));
+    this.context.store.removeChangeListener(this._onChange.bind(this))
   }
 
   render() {
     return (
       <div>
-        {this.context.store.comments().map((comment, i) => {
-          return (<Comment key={i} {... comment} />);
+        {this.context.store.comments(this.props.parent_id).map((comment, i) => {
+          return (<Comment key={i} {... comment} />)
         })}
       </div>
-    );
+    )
   }
 
   _onChange() {
-    this.forceUpdate();
+    this.forceUpdate()
   }
 }
-export default CommentList;
+export default CommentList

@@ -1,4 +1,5 @@
 import CommentForm from 'components/comment_form'
+import CommentList from 'components/comment_list'
 
 class Comment extends React.Component {
   static get propTypes(){
@@ -16,6 +17,7 @@ class Comment extends React.Component {
         <p>{this.props.body}</p>
         <p className="right"> by: {this.props.author}</p>
         <CommentForm parent_id={this.props.id} />
+        <CommentList parent_id={this.props.id} />
       </li>
     )
   }
