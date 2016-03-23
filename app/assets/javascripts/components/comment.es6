@@ -11,12 +11,27 @@ class Comment extends React.Component {
     }
   }
 
+  constructor() {
+    super()
+    this.state = { isReplying: false }
+  }
+
+  onToggleReply() {
+    this.setState({ isReplying: !this.state.isReplying })
+  }
+
   render() {
+    const replyText = this.state.isReplying ? 'Hide' : 'Reply'
     return (
-      <li>
-        <p>{this.props.body}</p>
-        <p className="right"> by: {this.props.author}</p>
-        <CommentForm parent_id={this.props.id} />
+      <li className="comment row collapse">
+        <blockquote>
+          {this.props.body}
+          <cite>
+            by {this.props.author}
+          </cite>
+        </blockquote>
+        <button className='button tiny secondary' onClick={this.onToggleReply.bind(this)}>{replyText}</button>
+        <CommentForm parent_id={this.props.id} isReplying={this.state.isReplying} />
         <CommentList parent_id={this.props.id} />
       </li>
     )
