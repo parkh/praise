@@ -6,10 +6,13 @@ class Actions {
   static addComment(params) {
     Api.post('/songs/1/comments', {
       comment: params
-    })
-    AppDispatcher.dispatch({
-      actionType: Constants.ADD_COMMENT,
-      comment: params
+    }).then( resp => {
+      return resp.json()
+    }).then( comment => {
+      AppDispatcher.dispatch({
+        actionType: Constants.ADD_COMMENT,
+        comment: params
+      })
     })
   }
 
