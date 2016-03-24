@@ -38,3 +38,4 @@ end
 gem 'ancestry'
 gem 'rails_admin'
 gem 'foundation-rails', '5.5.3.2'
+gem 'foreman'
