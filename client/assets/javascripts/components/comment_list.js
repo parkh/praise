@@ -1,4 +1,4 @@
-import Comment from 'components/comment'
+import Comment from './comment'
 import React from 'react'
 
 class CommentList extends React.Component {

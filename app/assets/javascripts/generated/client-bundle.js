@@ -51,9 +51,9 @@
 /* 1 */
 /***/ function(module, exports, __webpack_require__) {
 
-	'use strict';
+	"use strict";
 
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
 
 	var _react = __webpack_require__(2);
 
@@ -67,7 +67,7 @@
 
 	window.renderReact = function (id, component, props) {
 	  var component = __webpack_require__(158)("./" + toUnderscore(component));
-	  _react2['default'].render(_react2['default'].createElement(component, props), document.getElementById(id));
+	  _react2["default"].render(_react2["default"].createElement(component, props), document.getElementById(id));
 	};
 
 /***/ },
@@ -20494,13 +20494,13 @@
 
 	function _inherits(subClass, superClass) { if (typeof superClass !== 'function' && superClass !== null) { throw new TypeError('Super expression must either be null or a function, not ' + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
-	var _componentsComment_form = __webpack_require__(160);
+	var _comment_form = __webpack_require__(160);
 
-	var _componentsComment_form2 = _interopRequireDefault(_componentsComment_form);
+	var _comment_form2 = _interopRequireDefault(_comment_form);
 
-	var _componentsComment_list = __webpack_require__(161);
+	var _comment_list = __webpack_require__(161);
 
-	var _componentsComment_list2 = _interopRequireDefault(_componentsComment_list);
+	var _comment_list2 = _interopRequireDefault(_comment_list);
 
 	var _react = __webpack_require__(2);
 
@@ -20583,12 +20583,12 @@
 	          { className: 'button tiny', onClick: this.onUpvote.bind(this) },
 	          '+1'
 	        ),
-	        _react2['default'].createElement(_componentsComment_form2['default'], {
+	        _react2['default'].createElement(_comment_form2['default'], {
 	          parent_id: this.props.id,
 	          isReplying: this.state.isReplying,
 	          onCommentSubmitted: this.onCommentSubmitted.bind(this)
 	        }),
-	        _react2['default'].createElement(_componentsComment_list2['default'], { parent_id: this.props.id })
+	        _react2['default'].createElement(_comment_list2['default'], { parent_id: this.props.id })
 	      );
 	    }
 	  }]);
@@ -20728,9 +20728,9 @@
 
 	function _inherits(subClass, superClass) { if (typeof superClass !== 'function' && superClass !== null) { throw new TypeError('Super expression must either be null or a function, not ' + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
-	var _componentsComment = __webpack_require__(159);
+	var _comment = __webpack_require__(159);
 
-	var _componentsComment2 = _interopRequireDefault(_componentsComment);
+	var _comment2 = _interopRequireDefault(_comment);
 
 	var _react = __webpack_require__(2);
 
@@ -20762,7 +20762,7 @@
 	        'ul',
 	        null,
 	        this.context.store.comments(this.props.parent_id).map(function (comment, i) {
-	          return _react2['default'].createElement(_componentsComment2['default'], _extends({ key: i }, comment));
+	          return _react2['default'].createElement(_comment2['default'], _extends({ key: i }, comment));
 	        })
 	      );
 	    }
@@ -20814,13 +20814,13 @@
 
 	var _storesComment_store2 = _interopRequireDefault(_storesComment_store);
 
-	var _componentsComment_list = __webpack_require__(161);
+	var _comment_list = __webpack_require__(161);
 
-	var _componentsComment_list2 = _interopRequireDefault(_componentsComment_list);
+	var _comment_list2 = _interopRequireDefault(_comment_list);
 
-	var _componentsComment_form = __webpack_require__(160);
+	var _comment_form = __webpack_require__(160);
 
-	var _componentsComment_form2 = _interopRequireDefault(_componentsComment_form);
+	var _comment_form2 = _interopRequireDefault(_comment_form);
 
 	var _react = __webpack_require__(2);
 
@@ -20852,8 +20852,8 @@
 	      return _react2['default'].createElement(
 	        'div',
 	        null,
-	        _react2['default'].createElement(_componentsComment_form2['default'], { isReplying: true }),
-	        _react2['default'].createElement(_componentsComment_list2['default'], { parent_id: null })
+	        _react2['default'].createElement(_comment_form2['default'], { isReplying: true }),
+	        _react2['default'].createElement(_comment_list2['default'], { parent_id: null })
 	      );
 	    }
 	  }], [{
@@ -20869,7 +20869,6 @@
 	  return CommentSection;
 	})(_react2['default'].Component);
 
-	window.CommentSection = CommentSection;
 	exports['default'] = CommentSection;
 	module.exports = exports['default'];
 
@@ -36523,6 +36522,10 @@
 
 	var _events = __webpack_require__(173);
 
+	var _lodash = __webpack_require__(170);
+
+	var _lodash2 = _interopRequireDefault(_lodash);
+
 	var CommentStore = (function (_EventEmitter) {
 	  _inherits(CommentStore, _EventEmitter);
 
@@ -36576,7 +36579,7 @@
 	  }, {
 	    key: 'comments',
 	    value: function comments(parentId) {
-	      return _.chain(this._comments.filter(function (c) {
+	      return _lodash2['default'].chain(this._comments.filter(function (c) {
 	        return c && c.parent_id === parentId;
 	      })).sortBy('rank').reverse().value();
 	    }

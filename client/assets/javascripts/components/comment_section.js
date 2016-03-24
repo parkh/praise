@@ -1,7 +1,7 @@
-import Actions from 'actions'
-import CommentStore from 'stores/comment_store'
-import CommentList from 'components/comment_list'
-import CommentForm from 'components/comment_form'
+import Actions from '../actions'
+import CommentStore from '../stores/comment_store'
+import CommentList from './comment_list'
+import CommentForm from './comment_form'
 import React from 'react'
 
 class CommentSection extends React.Component {
@@ -37,5 +37,4 @@ class CommentSection extends React.Component {
   }
 }
 
-window.CommentSection = CommentSection
 export default CommentSection

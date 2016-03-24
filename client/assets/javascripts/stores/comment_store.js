@@ -1,6 +1,7 @@
-import AppDispatcher from 'app_dispatcher'
-import Constants from 'constants'
+import AppDispatcher from '../app_dispatcher'
+import Constants from '../constants'
 import { EventEmitter } from 'events'
+import _ from 'lodash'
 
 class CommentStore extends EventEmitter {
 
@@ -28,7 +29,7 @@ class CommentStore extends EventEmitter {
     })
   }
 
-  addComment (comment)  {
+  addComment (comment) {
     this._comments[comment.id || this._comments.length ] = comment
   }
 
