@@ -5,7 +5,7 @@ class Comment extends React.Component {
 
   static get contextTypes() {
     return {
-      actions: React.PropTypes.func.isRequired
+      actions: React.PropTypes.object.isRequired
     }
   }
 

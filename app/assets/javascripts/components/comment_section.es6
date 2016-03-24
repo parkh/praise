@@ -8,14 +8,14 @@ class CommentSection extends React.Component {
   constructor(props) {
     super()
     this.store = new CommentStore()
-    this.actions = Actions
+    this.actions = new Actions(props.songId)
     this.actions.setComments(JSON.parse(props.comments))
   }
 
   static get childContextTypes() {
     return {
       store: React.PropTypes.object.isRequired,
-      actions: React.PropTypes.func.isRequired
+      actions: React.PropTypes.object.isRequired
     }
   }
 

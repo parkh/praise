@@ -1,4 +1,9 @@
 class CommentsController < ApplicationController
+
+  def index
+    @comments = Comment.where(song_id: params[:song_id])
+  end
+
   def create
     @comment = Comment.create(comment_params.merge(song_id: params[:song_id]))
   end
@@ -10,6 +15,6 @@ class CommentsController < ApplicationController
   end
 
   def comment_params
-    params.required(:comment).permit(:body, :author, :parent_id, :comment_id)
+    params.require(:comment).permit(:body, :author, :parent_id)
   end
 end

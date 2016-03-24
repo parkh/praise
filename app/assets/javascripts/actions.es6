@@ -3,23 +3,21 @@ import Constants from 'constants'
 import Api from 'api'
 
 class Actions {
-  static addComment(params) {
-    Api.post('/songs/1/comments', {
-      comment: params
-    }).then( resp => {
-      return resp.json()
-    }).then( comment => {
-      AppDispatcher.dispatch({
-        actionType: Constants.ADD_COMMENT,
-        comment: params
-      })
+
+  constructor(songId) {
+    this.songId = songId
+    this.watchInterval = setInterval(this.watch.bind(this), 1000)
+  }
+
+  setComments(params) {
+    AppDispatcher.dispatch({
+      actionType: Constants.SET_COMMENTS,
+      comments: params
     })
   }
 
-  static upvoteComment(comment) {
-    Api.put(`/songs/1/comments/${comment.id}/upvote`).then( resp => {
-      return resp.json()
-    }).then( comment => {
+  upvoteComment(comment) {
+    Api.put(`/songs/${this.songId}/comments/${comment.id}/upvote`).then( comment => {
       AppDispatcher.dispatch({
         actionType: Constants.UPVOTE_COMMENT,
         comment: comment
@@ -27,10 +25,20 @@ class Actions {
     })
   }
 
-  static setComments(params) {
-    AppDispatcher.dispatch({
-      actionType: Constants.SET_COMMENTS,
-      comments: params
+  addComment(params) {
+    Api.post(`/songs/${this.songId}/comments`, {
+      comment: params
+    }).then( comment => {
+      AppDispatcher.dispatch({
+        actionType: Constants.ADD_COMMENT,
+        comment: comment
+      })
+    })
+  }
+
+  watch() {
+    Api.get(`/songs/${this.songId}/comments`).then( comments => {
+      this.setComments(comments)
     })
   }
 }
