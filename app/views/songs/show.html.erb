@@ -9,9 +9,9 @@
     <hr>
     <% props = JSON.parse("{ \"songId\": #{@song.id}, \"comments\": #{raw(render(template: 'comments/index.json.jbuilder'))} }") %>
     <% if params[:client].present? %>
-      <%= client( 'CommentSection', 'cs', props ) %>
-    <% else %>
       <%= isomorphic( 'CommentSection', 'cs', props ) %>
+    <% else %>
+      <%= client( 'CommentSection', 'cs', props ) %>
     <% end %>
   </div>
   

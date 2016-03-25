@@ -1,4 +1,6 @@
 import _ from 'lodash'
+import Promise from 'es6-promise'
+import fetch from 'isomorphic-fetch'
 
 class Api {
 
