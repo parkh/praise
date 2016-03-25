@@ -16,3 +16,4 @@
 !/log/.keep
 /tmp
 /client/node_modules
+/coverage
