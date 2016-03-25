@@ -8,8 +8,11 @@
     <h3>Comments</h3>
     <hr>
     <% props = JSON.parse("{ \"songId\": #{@song.id}, \"comments\": #{raw(render(template: 'comments/index.json.jbuilder'))} }") %>
-    <!-- <%= client( 'CommentSection', 'cs', props ) %> -->
-    <%= isomorphic( 'CommentSection', 'cs', props ) %>
+    <% if params[:client].present? %>
+      <%= client( 'CommentSection', 'cs', props ) %>
+    <% else %>
+      <%= isomorphic( 'CommentSection', 'cs', props ) %>
+    <% end %>
   </div>
   
 </div>
